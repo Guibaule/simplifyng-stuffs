@@ -1,0 +1,197 @@
+.test-component {
+    width: 400px;
+    height: 200px;
+    background-color: #9b9b9b;
+}
+
+.animated-border {
+    position:relative;
+    overflow: hidden;
+}
+
+.animated-border.gold::after, .animated-border.gold::before {
+    background-color: gold;
+}
+
+.animated-border.red::after, .animated-border.red::before {
+    background-color: rgb(201, 18, 18);
+}
+
+.animated-border.faster::after, .animated-border.faster::before {
+    animation-duration: 1s;
+}
+
+.animated-border.slower::after, .animated-border.slower::before {
+    animation-duration: 2.6s;
+}
+
+.animated-border.super-fast::after, .animated-border.super-fast::before {
+    animation-duration: 0.4s;
+}
+
+.animated-border.thicc::after {
+    --width: 6px;
+    width: 6px;
+}
+
+.animated-border.thicc::before {
+    --height:6px;
+    height: 6px;
+}
+
+.animated-border.narrow::after {
+    --width: 2px;
+    width: 2px;
+}
+
+.animated-border.narrow::before {
+    --height:2px;
+    height: 2px;
+}
+
+
+
+.animated-border.large::after {
+    --height:36px;
+    height: 36px;
+}
+
+.animated-border.large::before {
+    --width: 36px;
+    width: 36px;
+}
+
+.animated-border.smaller::after {
+    --height:14px;
+    height: 14px;
+}
+
+.animated-border.smaller::before {
+    --width: 14px;
+    width: 14px;
+}
+
+.animated-border::before {
+    --animation-name: top-run;
+    --height:4px;
+    --width: 20px;
+}
+
+.animated-border::after {
+    --animation-name: bottom-run;
+    --height:20px;
+    --width: 4px;
+}
+
+.animated-border.oposites::before {
+    --animation-name: top-run;
+    --height:4px;
+    --width: 20px;
+}
+
+.animated-border.oposites::after {
+    --animation-name: bottom-run-op;
+    --height:20px;
+    --width: 4px;
+}
+
+.animated-border::before, .animated-border::after {
+    content: "";
+    position: absolute;
+    width: var(--width);
+    height: var(--height);
+    background-color: #fff;
+    animation-name: var(--animation-name);
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.animated-border.rounded {
+    border-radius: 6px;
+}
+
+@keyframes top-run {
+    0% {
+        left: 0px;
+    }
+
+    49% {
+        left: calc(100% - var(--height));
+        width: var(--width);
+        height: var(--height);
+        top: 0px;
+    }
+
+    50% {
+        left: calc(100% - var(--height));
+        width: var(--height);
+        height: var(--width);
+        top: 0px;
+    }
+
+    100% {
+        left: calc(100% - var(--height));
+        width: var(--height);
+        height: var(--width);
+        top: 100%;
+    }
+}
+
+@keyframes bottom-run {
+    0% {
+        left: 0px;
+        top: 0px;
+    }
+
+    49% {
+        left: 0px;
+        top: calc(100% - var(--width));
+        width: var(--width);
+        height: var(--height);
+    }
+
+    50% {
+        left: 0px;
+        top: calc(100% - var(--width));
+        width: var(--height);
+        height: var(--width);
+    }
+
+    100% {
+        left: 100%;
+        top: calc(100% - var(--width));
+        width: var(--height);
+        height: var(--width);
+    }
+}
+
+@keyframes bottom-run-op {
+    0% {
+        left: calc(100% - var(--width));
+        top: calc(100% - var(--width));
+        width: var(--height);
+        height: var(--width);
+    }
+
+    49% {
+        left: 0px;
+        top: calc(100% - var(--width));
+        width: var(--height);
+        height: var(--width);
+    }
+
+    50% {
+        left: 0px;
+        top: calc(100% - var(--width));
+        width: var(--width);
+        height: var(--height);
+    }
+
+    100% {
+        left: 0%;
+        top: 0%;
+        width: var(--width);
+        height: var(--height);
+    }
+}
